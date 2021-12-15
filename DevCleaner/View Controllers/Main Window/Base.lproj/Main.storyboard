@@ -341,7 +341,7 @@ DQ
                                             <nil key="backgroundColor"/>
                                         </clipView>
                                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="p1y-QG-xIv">
-                                            <rect key="frame" x="1" y="383" width="544" height="16"/>
+                                            <rect key="frame" x="1" y="400" width="618" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="3Uz-J4-Lkn">
@@ -423,7 +423,7 @@ DQ
                                 <rect key="frame" x="93" y="530" width="549" height="80"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="AcK-WQ-6Fn">
                                     <font key="font" metaFont="system"/>
-                                    <string key="title">Xcode generates large amount of cached data that could be beneficial to development speed but also tends to consume large amount of data on your hard drive. This tool allows to clean those caches allowing you to decide what you need and what not.  There's absolutely no warranty and you're using this tool for your responsibility!</string>
+                                    <mutableString key="title">Xcode generates large amount of cached data that could be beneficial to development speed but also tends to consume large amount of data on your hard drive. This tool cleans those caches, allowing you to decide what you need and what you do not.  There's absolutely no warranty and correct use of this tool is your own responsibility!</mutableString>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -516,6 +516,21 @@ DQ
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="McT-rn-Ud6">
+                                <rect key="frame" x="490" y="13" width="79" height="32"/>
+                                <buttonCell key="cell" type="push" title="Rescan" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="U9j-Mt-REm">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="rescan:" target="XfG-lQ-9wD" id="MFp-Oe-xl1"/>
+                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.scanning" id="dGa-57-JSG">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Mia-rv-zCw" secondAttribute="bottom" constant="11" id="0Re-z9-oKe"/>
@@ -529,6 +544,7 @@ DQ
                             <constraint firstItem="0Yp-uh-F76" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="JvS-uJ-6t5"/>
                             <constraint firstItem="8Gh-Ea-jZF" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Kv5-LU-bRM"/>
                             <constraint firstAttribute="trailing" secondItem="0Yp-uh-F76" secondAttribute="trailing" constant="20" id="MmA-VX-2cE"/>
+                            <constraint firstItem="qY4-v6-aG6" firstAttribute="height" secondItem="McT-rn-Ud6" secondAttribute="height" id="Rjo-4K-Kwi"/>
                             <constraint firstItem="RaE-kH-QJe" firstAttribute="top" secondItem="pF6-87-JUR" secondAttribute="bottom" constant="8" id="UNU-HP-CHX"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qHE-u2-bEP" secondAttribute="trailing" constant="20" symbolic="YES" id="V5C-PO-VKv"/>
                             <constraint firstItem="lXf-LO-pmC" firstAttribute="top" secondItem="eBx-hh-WZ7" secondAttribute="bottom" constant="8" id="WUR-R5-KWP"/>
@@ -549,6 +565,7 @@ DQ
                             <constraint firstItem="qY4-v6-aG6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="kzY-LT-Hxv"/>
                             <constraint firstItem="pF6-87-JUR" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="leN-S1-MqU"/>
                             <constraint firstItem="8Gh-Ea-jZF" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="39" id="mbv-CU-PdJ"/>
+                            <constraint firstItem="qY4-v6-aG6" firstAttribute="leading" secondItem="McT-rn-Ud6" secondAttribute="trailing" constant="12" symbolic="YES" id="oTd-T3-7c2"/>
                             <constraint firstItem="Mia-rv-zCw" firstAttribute="leading" secondItem="Jk9-Oc-a0l" secondAttribute="trailing" constant="8" symbolic="YES" id="qEI-zi-Cib"/>
                             <constraint firstAttribute="bottom" secondItem="jjO-ih-b0v" secondAttribute="bottom" constant="11" id="qyu-0a-hMq"/>
                             <constraint firstItem="qY4-v6-aG6" firstAttribute="top" secondItem="0Yp-uh-F76" secondAttribute="bottom" constant="20" id="rMA-Wm-ksZ"/>
@@ -557,7 +574,8 @@ DQ
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7x4-OM-pal" secondAttribute="trailing" constant="20" symbolic="YES" id="uL5-Fb-pHg"/>
                             <constraint firstAttribute="trailing" secondItem="RaE-kH-QJe" secondAttribute="trailing" constant="20" id="uuy-TL-U3O"/>
                             <constraint firstItem="nSL-jb-aDV" firstAttribute="leading" secondItem="S06-6o-y2V" secondAttribute="trailing" constant="8" id="wCM-VF-Tsd"/>
-                            <constraint firstItem="qY4-v6-aG6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jjO-ih-b0v" secondAttribute="trailing" constant="8" symbolic="YES" id="whU-U7-hUh"/>
+                            <constraint firstItem="qY4-v6-aG6" firstAttribute="centerY" secondItem="McT-rn-Ud6" secondAttribute="centerY" id="wSR-Gb-F5V"/>
+                            <constraint firstItem="McT-rn-Ud6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jjO-ih-b0v" secondAttribute="trailing" constant="8" symbolic="YES" id="whU-U7-hUh"/>
                             <constraint firstItem="0Yp-uh-F76" firstAttribute="top" secondItem="7x4-OM-pal" secondAttribute="bottom" constant="8" id="xIo-zQ-Nun"/>
                             <constraint firstAttribute="trailing" secondItem="lXf-LO-pmC" secondAttribute="trailing" constant="20" id="xti-D5-39o"/>
                             <constraint firstItem="7x4-OM-pal" firstAttribute="top" secondItem="eBx-hh-WZ7" secondAttribute="bottom" constant="8" id="zDa-eQ-uSg"/>
@@ -573,6 +591,7 @@ DQ
                         <outlet property="cleanButton" destination="qY4-v6-aG6" id="Txw-Is-yfd"/>
                         <outlet property="outlineView" destination="xU2-il-hl0" id="HhD-WY-k3B"/>
                         <outlet property="progressIndicator" destination="kWj-vG-o6z" id="9rB-Mr-oPa"/>
+                        <outlet property="rescanButton" destination="McT-rn-Ud6" id="435-tz-jLR"/>
                         <outlet property="totalBytesTextField" destination="lXf-LO-pmC" id="FZ6-xo-Qsp"/>
                         <segue destination="clE-D7-ddV" kind="sheet" identifier="ShowCleaningView" id="Yc0-bu-VmE"/>
                     </connections>
@@ -591,6 +610,7 @@ DQ
                         <outlet property="delegate" destination="XfG-lQ-9wD" id="Fnf-FC-LAd"/>
                     </connections>
                 </menu>
+                <userDefaultsController representsSharedInstance="YES" id="VR1-73-NLJ"/>
             </objects>
             <point key="canvasLocation" x="143.5" y="1032.5"/>
         </scene>
@@ -769,6 +789,6 @@ DQ
     <resources>
         <image name="DevCleanerIcon" width="256" height="256"/>
         <image name="NSFolder" width="32" height="32"/>
-        <image name="TwitterIcon" width="12.5" height="10"/>
+        <image name="TwitterIcon" width="13" height="10"/>
     </resources>
 </document>

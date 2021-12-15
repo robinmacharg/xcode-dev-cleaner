@@ -55,6 +55,8 @@ final class MainViewController: NSViewController {
     
     @IBOutlet private weak var progressIndicator: NSProgressIndicator!
     @IBOutlet private weak var cleanButton: NSButton!
+    @IBOutlet private weak var rescanButton: NSButton!
+    
     @IBOutlet private weak var benefitsTextField: NSTextField!
     
     @IBOutlet weak var accessWarningsView: NSView!
@@ -68,6 +70,9 @@ final class MainViewController: NSViewController {
     
     private var xcodeFiles: XcodeFiles?
     private var loaded = false
+    
+    /// Is a scan in progress?  The Rescan button's enabled state is bound to this property.
+    @objc dynamic var scanning = false
     
     // MARK: Initialization & overrides
     override func viewDidLoad() {
@@ -259,7 +264,11 @@ final class MainViewController: NSViewController {
     }
     
     private func startScan() {
+        
+        scanning = true
+        
         guard let xcodeFiles = self.xcodeFiles else {
+            scanning = false
             return
         }
         
@@ -578,6 +587,8 @@ extension MainViewController: XcodeFilesScanDelegate {
         self.stopLoading()
 
         self.updateButtonsAndLabels()
+        
+        scanning = false
     }
 }
 
